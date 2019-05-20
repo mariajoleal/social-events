@@ -1,0 +1,19 @@
+.event {
+  margin: 25px;
+}
+
+.avatar {
+  background-color: #f50057 !important;
+}
+
+.media {
+  height: 300px !important;
+}
+
+.spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: calc( 50% - ( 150px / 2) ); 
+  right: calc( 50% - ( 150px / 2) ); 
+}
