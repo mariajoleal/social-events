@@ -8,3 +8,7 @@ export function addEvent(event) {
   console.log(event);
   return axios.post('http://localhost:8080/api/events/', event);
 } 
+
+export function login(user) {
+  return axios.post('http://localhost:8080/api/users/login', user);
+} 

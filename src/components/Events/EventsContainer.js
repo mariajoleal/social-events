@@ -10,8 +10,6 @@ class EventsContainer extends Component {
       loading: true,
     };
 
-    // this.handleUsername = this.handleUsername.bind(this);
-    // this.handlePass = this.handlePass.bind(this);
     this.handleCreate = this.handleCreate.bind(this);
   }
 
