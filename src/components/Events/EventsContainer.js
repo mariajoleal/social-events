@@ -28,7 +28,8 @@ class EventsContainer extends Component {
     addEvent(event)
     .then((res) => {
       const events = this.state.events;
-      events.push(res.data.data); 
+
+      events.push(res.data); 
       this.setState({
         events,
         loading: false,

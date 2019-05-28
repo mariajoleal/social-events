@@ -7,6 +7,7 @@ import './Event.css';
 
 const EventsComponent = (props) => {
   const { loading, data, handleCreate } = props;
+
   return (
     <>
       <div className="spinner">
@@ -23,11 +24,11 @@ const EventsComponent = (props) => {
             <Form handleCreate={handleCreate} />
           </Grid>
           <Grid item md={9}>
-            <Grid container spacing={16}>
+            <Grid container spacing={8}>
               {
-                data && data.map((event) => {
+                data && data.map((event, index) => {
                   return (
-                    <Grid item md={4}>
+                    <Grid key={index} item md={4}>
                       <CardContainer data={event} />
                     </Grid>
                   )
@@ -39,7 +40,6 @@ const EventsComponent = (props) => {
       </div>}
   </>
   );
-  
 }
 
 export default EventsComponent;

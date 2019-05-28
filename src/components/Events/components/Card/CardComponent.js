@@ -10,16 +10,43 @@ import CardHeader from '@material-ui/core/CardHeader';
 import IconButton from '@material-ui/core/IconButton';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import red from '@material-ui/core/colors/red';
+import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
 import moment from 'moment';
+
+const useStyles = makeStyles(theme => ({
+  card: {
+    maxWidth: 400,
+  },
+  media: {
+    height: 100,
+    paddingTop: '56.25%', // 16:9
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+  avatar: {
+    backgroundColor: red['A400'],
+  },
+}));
 
 const CardComponent = (props) => {
   const { expanded, handleExpandClick, event } = props;
+  const classes = useStyles();
 
   return (
-    <Card >
+    <Card className={classes.card}>
       <CardHeader
         avatar={
-          <Avatar aria-label="Recipe" className="avatar">
+          <Avatar aria-label="Recipe" className={classes.avatar}>
             {event.createdBy[0].toUpperCase()}
           </Avatar>
         }
@@ -27,7 +54,7 @@ const CardComponent = (props) => {
         subheader={moment(event.date).format('LL')}
       />
       <CardMedia
-        className="media"
+        className={classes.media}
         image={event.image}
         title="Contemplative Reptile"
       />
@@ -39,9 +66,9 @@ const CardComponent = (props) => {
           {event.attending} are going
         </Button>
         <IconButton
-          // className={classnames(classes.expand, {
-          //   [classes.expandOpen]: this.state.expanded,
-          // })}
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="Show more"

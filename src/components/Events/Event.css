@@ -2,14 +2,6 @@
   margin: 25px;
 }
 
-.avatar {
-  background-color: #f50057 !important;
-}
-
-.media {
-  height: 300px !important;
-}
-
 .spinner {
   display: block;
   position: fixed;
