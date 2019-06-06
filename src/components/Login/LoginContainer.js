@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { login } from '../../utils/api';
 import LoginComponent from './LoginComponent';
+import auth from '../../auth';
 
 class LoginContainer extends Component {
   
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: "",
       password: "",
@@ -31,8 +31,8 @@ class LoginContainer extends Component {
       };
       login(userData)
         .then((res) => {
-          this.setState({
-            success: res.data.success
+          auth.authenticate(() => {
+            this.props.history.push('/events');
           });
         })
         .catch((err) => {
@@ -61,10 +61,9 @@ class LoginContainer extends Component {
   };
 
   render() {
-    const { success, errors } = this.state;
+    const { errors } = this.state;
 
     return (
-      success ? <Redirect to='/events' /> :
       <LoginComponent 
         errors={errors}
         handleSubmit={this.onSubmit}
