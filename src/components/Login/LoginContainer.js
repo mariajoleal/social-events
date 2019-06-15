@@ -11,7 +11,6 @@ class LoginContainer extends Component {
       email: "",
       password: "",
       errors: {},
-      success: false,
     };
 
     this.onChange = this.onChange.bind(this);

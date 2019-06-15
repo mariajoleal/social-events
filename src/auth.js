@@ -1,20 +1,20 @@
 class Auth {
   constructor() {
-    this.isAuthenticated = false
+    this.myStorage = window.localStorage;
   }
 
   authenticate(cb) {
-    this.isAuthenticated = true;
-    cb()
+    this.myStorage.setItem('Auth', 'true');
+    cb();
   }
 
   logout(cb) {
-    this.isAuthenticated = false;
-    cb()
+    this.myStorage.removeItem('Auth');
+    cb();
   }
 
   isUserAuthenticated() {
-    return this.isAuthenticated;
+    return this.myStorage.getItem('Auth') === 'true';
   }
 }
 

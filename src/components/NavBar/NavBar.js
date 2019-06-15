@@ -6,6 +6,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom'
+import auth from '../../auth';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const NavBar = () => {
+const NavBar = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -53,6 +54,12 @@ const NavBar = () => {
     handleMobileMenuClose();
   }
 
+  function logout() {
+    auth.logout(() => {
+      props.history.push('/');
+    })
+  }
+
   function handleMobileMenuOpen(event) {
     setMobileMoreAnchorEl(event.currentTarget);
   }
@@ -70,7 +77,7 @@ const NavBar = () => {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Log out</MenuItem>
+      <MenuItem onClick={logout}>Log out</MenuItem>
     </Menu>
   );
 
