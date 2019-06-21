@@ -6,14 +6,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
-
 import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
 import DateFnsUtils from '@date-io/date-fns';
-
+import {DropzoneArea} from 'material-ui-dropzone'
+import './Form.css'
 const FormComponent = (props) => {
-const { open, handleClose, handleDateChange, selectedDate,
-  handleClickOpen, handleNameChange, handlePlaceChange,
-  handleAdd } = props;
+const { open, handleClose, selectedDate, handleClickOpen, handleChange, handleAdd, handleUpload } = props;
 
   return (
     <div>
@@ -34,7 +32,7 @@ const { open, handleClose, handleDateChange, selectedDate,
             id="name"
             label="Name"
             type="text"
-            onChange={handleNameChange}
+            onChange={handleChange}
             fullWidth
           />
           <TextField
@@ -42,26 +40,36 @@ const { open, handleClose, handleDateChange, selectedDate,
             id="place"
             label="Place"
             type="text"
-            onChange={handlePlaceChange}
+            onChange={handleChange}
             fullWidth
+          />
+          <DropzoneArea 
+            onDrop={handleUpload}
+            filesLimit={1}
+            acceptedFiles={['image/*']}
+            dropZoneClass='dropzone'
+            showPreviewsInDropzone={false}
+            showPreviews={true}
           />
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
           <DatePicker
+          id="selectedDate"
           margin="normal"
-          label="Date picker"
+          label="Date"
           value={selectedDate}
-          onChange={handleDateChange}
+          onChange={handleChange}
         />
         
         <TimePicker
+          id="selectedDate"
           margin="normal"
-          label="Time picker"
+          label="Time"
           value={selectedDate}
-          onChange={handleDateChange}
+          onChange={handleChange}
         />
         </Grid>
-        </ MuiPickersUtilsProvider>
+        </MuiPickersUtilsProvider>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

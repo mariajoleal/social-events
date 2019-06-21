@@ -15,3 +15,9 @@ export function login(user) {
 export function register(newUser) {
   return axios.post('http://localhost:8080/api/users/register', newUser);
 } 
+
+export function uploadImage(file) {
+  return axios.post(' https://api.cloudinary.com/v1_1/socializeit/image/upload', file, {
+    headers: { "X-Requested-With": "XMLHttpRequest" },
+  });
+}

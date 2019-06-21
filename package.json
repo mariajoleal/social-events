@@ -9,6 +9,7 @@
     "@material-ui/styles": "^4.0.1",
     "axios": "^0.18.0",
     "date-fns": "^2.0.0-alpha.27",
+    "material-ui-dropzone": "^2.3.5",
     "material-ui-pickers": "^2.2.4",
     "moment": "^2.24.0",
     "react": "^16.8.4",
