@@ -11,7 +11,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import {DropzoneArea} from 'material-ui-dropzone'
 import './Form.css'
 const FormComponent = (props) => {
-const { open, handleClose, selectedDate, handleClickOpen, handleChange, handleAdd, handleUpload } = props;
+const { open, handleClose, selectedDate, handleClickOpen, handleChange, handleAdd, handleUpload, handleDateChange } = props;
 
   return (
     <div>
@@ -58,7 +58,7 @@ const { open, handleClose, selectedDate, handleClickOpen, handleChange, handleAd
           margin="normal"
           label="Date"
           value={selectedDate}
-          onChange={handleChange}
+          onChange={handleDateChange}
         />
         
         <TimePicker
@@ -66,7 +66,7 @@ const { open, handleClose, selectedDate, handleClickOpen, handleChange, handleAd
           margin="normal"
           label="Time"
           value={selectedDate}
-          onChange={handleChange}
+          onChange={handleDateChange}
         />
         </Grid>
         </MuiPickersUtilsProvider>

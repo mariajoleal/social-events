@@ -50,6 +50,12 @@ class Form extends Component {
         
   }
 
+  handleDateChange = (date) => {
+    this.setState({
+      selectedDate:date,
+    });
+  }
+
   onSubmit = () => {
     const { name, place, selectedDate, finalURL } = this.state
     const event = {

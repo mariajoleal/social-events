@@ -51,7 +51,7 @@ const CardComponent = (props) => {
           </Avatar>
         }
         title={event.name}
-        subheader={moment(event.date).format('LL')}
+        subheader={moment(event.dateTime).format('LL')}
       />
       <CardMedia
         className={classes.media}
@@ -78,7 +78,7 @@ const CardComponent = (props) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Event would take place in {event.place} at {event.time} </Typography>
+          <Typography paragraph>Event would take place at {event.place} on {moment(event.dateTime).format('LL')} </Typography>
         </CardContent>
       </Collapse>
     </Card>
